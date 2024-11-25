@@ -51,23 +51,18 @@ class Program
     {
         string path = GetPath();
 
+        List<string> markdownList = [];
+
         // Read and process the Markdown file line by line
-        StringBuilder htmlBuilder = new();
         using (StreamReader reader = new(path))
         {
             string? line;
             while ((line = reader.ReadLine()) != null)
             {
-                string htmlLine = ConvertMarkdownLineToHtml(line);
-                htmlBuilder.AppendLine(htmlLine);
+                markdownList.Add(line);
             }
         }
-
-        // Output the final HTML
-        string htmlContent = htmlBuilder.ToString();
-        Console.WriteLine("Converted HTML:\n" + htmlContent);
-
-        SaveHtmlToFile(htmlContent);
+        Console.WriteLine("Read File at " + path);
     }
 
     static string GetPath()
@@ -82,51 +77,51 @@ class Program
             }
             else
             {
-                Console.WriteLine("Invalid file path or file not found.");
+                Console.WriteLine("Invalid file path or file not found.\n");
             }
         }
     }
 
-    static string ConvertMarkdownLineToHtml(string markdownLine)
-    {
-        // Simple Markdown-to-HTML conversion
-        if (markdownLine.StartsWith("# "))
-            return "<h1>" + markdownLine.Substring(2) + "</h1>";
-        if (markdownLine.StartsWith("## "))
-            return "<h2>" + markdownLine.Substring(3) + "</h2>";
-        if (markdownLine.StartsWith("### "))
-            return "<h3>" + markdownLine.Substring(4) + "</h3>";
-        if (markdownLine.StartsWith("- "))
-            return "<li>" + markdownLine.Substring(2) + "</li>";
+    // static string ConvertMarkdownLineToHtml(string markdownLine)
+    // {
+    //     // Simple Markdown-to-HTML conversion
+    //     if (markdownLine.StartsWith("# "))
+    //         return "<h1>" + markdownLine.Substring(2) + "</h1>";
+    //     if (markdownLine.StartsWith("## "))
+    //         return "<h2>" + markdownLine.Substring(3) + "</h2>";
+    //     if (markdownLine.StartsWith("### "))
+    //         return "<h3>" + markdownLine.Substring(4) + "</h3>";
+    //     if (markdownLine.StartsWith("- "))
+    //         return "<li>" + markdownLine.Substring(2) + "</li>";
 
-        // Fallback to a paragraph
-        return "<p>" + markdownLine + "</p>";
-    }
+    //     // Fallback to a paragraph
+    //     return "<p>" + markdownLine + "</p>";
+    // }
 
-    static void SaveHtmlToFile(string html)
-    {
-        while (true)
-        {
-            Console.WriteLine("Enter the destination path to save the HTML file:");
-            string? path = Console.ReadLine();
+    // static void SaveHtmlToFile(string html)
+    // {
+    //     while (true)
+    //     {
+    //         Console.WriteLine("Enter the destination path to save the HTML file:");
+    //         string? path = Console.ReadLine();
 
-            if (!string.IsNullOrEmpty(path))
-            {
-                try
-                {
-                    File.WriteAllText(path, html);
-                    Console.WriteLine("HTML file saved successfully.");
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error saving file: " + ex.Message);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid path. Please try again.");
-            }
-        }
-    }
+    //         if (!string.IsNullOrEmpty(path))
+    //         {
+    //             try
+    //             {
+    //                 File.WriteAllText(path, html);
+    //                 Console.WriteLine("HTML file saved successfully.");
+    //                 break;
+    //             }
+    //             catch (Exception ex)
+    //             {
+    //                 Console.WriteLine("Error saving file: " + ex.Message);
+    //             }
+    //         }
+    //         else
+    //         {
+    //             Console.WriteLine("Invalid path. Please try again.");
+    //         }
+    //     }
+    // }
 }
