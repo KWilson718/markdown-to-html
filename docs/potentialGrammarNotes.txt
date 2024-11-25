@@ -9,7 +9,7 @@
 <paragraph> -> <text_string>
 
 <text_string> -> <text_unit> | <text_string> <text_unit>
-<text_unit> -> <text> | <bold_text> | <italic_text> | <inline_code> | <link> | <image>
+<text_unit> -> <text> | <bold_text> | <italic_text> | <bold_italic_text> | <inline_code> | <link> | <image>
 
 <list> -> <unordered_list> | <ordered_list>
 
@@ -37,6 +37,7 @@
 
 <bold_text> -> "**" <text> "**" | "__" <text> "__"
 <italic_text> -> "*" <text> "*" | "_" <text> "_"
+<bold_italic_text> -> "***" <text> "*" | "___" <text> "___"
 
 <image> -> "!" "[" <alt_text> "]" "(" <image_url> ")"
 <alt_text> -> <text>
