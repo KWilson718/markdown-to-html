@@ -9,12 +9,13 @@
 <paragraph> -> <text_string>
 
 <text_string> -> <text_unit> | <text_string> <text_unit>
-<text_unit> -> <text> | <bold_text> | <italic_text> | <inline_code> | <link> | <image> | <list>
+<text_unit> -> <text> | <bold_text> | <italic_text> | <inline_code> | <link> | <image>
 
 <list> -> <unordered_list> | <ordered_list>
 
 <unordered_list> -> <unordered_item> | <unordered_list> <unordered_item>
-<unordered_item> -> "-" <list_content>
+<unordered_item> -> "-" <list_content> | "*" <list_content> | "+" <list_content>
+
 <ordered_list> -> <ordered_item> | <ordered_list> <ordered_item>
 <ordered_item> -> <number> "." <list_content>
 
