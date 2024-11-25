@@ -1,4 +1,6 @@
-﻿class Program
+﻿using MarkdownToHTML.modules;
+
+class Program
 {
     static void Main()
     {
@@ -52,15 +54,15 @@
         List<string> markdownList = [];
 
         // Read and process the Markdown file line by line
-        using (StreamReader reader = new(path))
+        using StreamReader reader = new(path);
+        string? line;
+        while ((line = reader.ReadLine()) != null)
         {
-            string? line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                markdownList.Add(line);
-            }
+            markdownList.Add(line);
         }
-        Console.WriteLine("Read File at " + path);
+
+        Lexer.Analyze(markdownList);
+
     }
 
     static string GetPath()
