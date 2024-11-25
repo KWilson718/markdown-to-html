@@ -1,0 +1,54 @@
+<start> -> <stmt_list>
+
+<stmt_list> -> <stmt_list> <stmt> | <stmt>
+
+<stmt> -> <title> | <paragraph> | <list> | <blockquote> | <code_block> | <horizontal_rule> | <image> | <table>
+
+<title> -> <title_type> <text_string> | <text_string> <title_line>
+
+<paragraph> -> <text_string>
+
+<text_string> -> <text_unit> | <text_string> <text_unit>
+<text_unit> -> <text> | <bold_text> | <italic_text> | <inline_code> | <link> | <image> | <list>
+
+<list> -> <unordered_list> | <ordered_list>
+
+<unordered_list> -> <unordered_item> | <unordered_list> <unordered_item>
+<unordered_item> -> "-" <list_content>
+<ordered_list> -> <ordered_item> | <ordered_list> <ordered_item>
+<ordered_item> -> <number> "." <list_content>
+
+<list_content> -> <text_string> | <list> | <stmt_list>
+
+<blockquote> -> ">" <text_string> | ">" <stmt_list>
+
+<code_block> -> "```" <code_language> <code_content> "```"
+<code_language> -> a string indicating language | epsilon
+<code_content> -> any text or code spanning multiple lines
+
+<inline_code> -> "`" <text> "`"
+
+<horizontal_rule> -> "---" | "***" | "___"
+
+<link> -> "[" <link_text> "]" "(" <link_url> ")"
+<link_text> -> <text>
+<link_url> -> a valid URL
+
+<bold_text> -> "**" <text> "**" | "__" <text> "__"
+<italic_text> -> "*" <text> "*" | "_" <text> "_"
+
+<image> -> "!" "[" <alt_text> "]" "(" <image_url> ")"
+<alt_text> -> <text>
+<image_url> -> a valid URL
+
+<table> -> <table_header> <table_rows>
+<table_header> -> "|" <table_cells> "|"
+<table_rows> -> <table_row> | <table_rows> <table_row>
+<table_row> -> "|" <table_cells> "|"
+<table_cells> -> <cell> | <table_cells> "|" <cell>
+<cell> -> <text_string> | epsilon
+
+<text> -> a plain string of characters excluding formatting symbols
+<title_type> -> "#" | "##" | "###" | "####" | "#####" | "######"
+<title_line> -> "=" | "-"
+<number> -> a numeric string

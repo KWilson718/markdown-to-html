@@ -2,4 +2,16 @@
 
 <stmt_list> -> <stmt_list> <stmt> | <stmt>
 
-<stmt> -> 
+<stmt> -> <title> | <paragraph> | <list>
+
+<title> -> <title_type> <text_string> | <text_string> <title_line>
+
+<paragraph> -> strings of text with various formatting marks for new lines
+
+<text_string> -> a string of text which can contain a line of stuff including bold identifiers, italics identifiers, and the likes
+
+<list> -> <unordered_list> | <ordered_list>
+
+<text> -> 
+
+<title_type> -> "#" | "##" | "###" | "####" | "#####" | "######"
