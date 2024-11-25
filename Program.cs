@@ -81,47 +81,4 @@ class Program
             }
         }
     }
-
-    // static string ConvertMarkdownLineToHtml(string markdownLine)
-    // {
-    //     // Simple Markdown-to-HTML conversion
-    //     if (markdownLine.StartsWith("# "))
-    //         return "<h1>" + markdownLine.Substring(2) + "</h1>";
-    //     if (markdownLine.StartsWith("## "))
-    //         return "<h2>" + markdownLine.Substring(3) + "</h2>";
-    //     if (markdownLine.StartsWith("### "))
-    //         return "<h3>" + markdownLine.Substring(4) + "</h3>";
-    //     if (markdownLine.StartsWith("- "))
-    //         return "<li>" + markdownLine.Substring(2) + "</li>";
-
-    //     // Fallback to a paragraph
-    //     return "<p>" + markdownLine + "</p>";
-    // }
-
-    // static void SaveHtmlToFile(string html)
-    // {
-    //     while (true)
-    //     {
-    //         Console.WriteLine("Enter the destination path to save the HTML file:");
-    //         string? path = Console.ReadLine();
-
-    //         if (!string.IsNullOrEmpty(path))
-    //         {
-    //             try
-    //             {
-    //                 File.WriteAllText(path, html);
-    //                 Console.WriteLine("HTML file saved successfully.");
-    //                 break;
-    //             }
-    //             catch (Exception ex)
-    //             {
-    //                 Console.WriteLine("Error saving file: " + ex.Message);
-    //             }
-    //         }
-    //         else
-    //         {
-    //             Console.WriteLine("Invalid path. Please try again.");
-    //         }
-    //     }
-    // }
 }
